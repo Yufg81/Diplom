@@ -1,0 +1,145 @@
+<!DOCTYPE html >
+
+<html>
+
+
+
+
+<head>
+<!--Кнопка назад-->
+<input type="button" onclick="history.back();" value="Назад"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!--Заголовок-->
+<title>Электронное пособие</title>
+</head>
+<body>
+<!--Обозначение языка написания скрипта-->
+<script type="text/javascript" language="JavaScript">
+ var res="213133"; 
+ <!--Функция проверки наличия ответа-->
+function check_me()
+{
+    var count=0;
+    with(document.test) {
+if (!Q1[0].checked&&!Q1[1].checked&&!Q1[2].checked&&!Q1[3].checked)  
+{count+=1};  
+if (!Q2[0].checked&&!Q2[1].checked&&!Q2[2].checked&&!Q2[3].checked)  
+{count+=1};  
+if (!Q3[0].checked&&!Q3[1].checked&&!Q3[2].checked&&!Q3[3].checked)  
+{count+=1};  
+if (!Q4[0].checked&&!Q4[1].checked&&!Q4[2].checked&&!Q4[3].checked)  
+{count+=1};  
+if (!Q5[0].checked&&!Q5[1].checked&&!Q5[2].checked&&!Q5[3].checked)  
+{count+=1};  
+if (!Q6[0].checked&&!Q6[1].checked&&!Q6[2].checked&&!Q6[3].checked)  
+{count+=1};  
+if (count>0) alert("Вы выполнили не все задания. Проверьте себя!")    
+        else answer();
+    }
+} 
+
+
+ <!--проверка соответствия-->
+function control(k, f1,f2,f3,f4,f5,f6) {
+if (k==1&&f1.checked) return true;
+if (k==2&&f2.checked) return true;
+if (k==3&&f3.checked) return true;
+if (k==4&&f4.checked) return true;
+if (k==5&&f5.checked) return true;
+if (k==6&&f6.checked) return true;
+return false;
+}
+<!--анализ результатов-->
+function answer() {
+answ="";
+     with(document)    {
+    answ+=control(res.charAt(0) ,test.Q1[0],test.Q1[1],test.Q1[2],test.Q1[3])?"1":"0";
+answ+=control(res.charAt(1) ,test.Q2[0],test.Q2[1],test.Q2[2],test.Q2[3])?"1":"0";
+answ+=control(res.charAt(2) ,test.Q3[0],test.Q3[1],test.Q3[2],test.Q3[3])?"1":"0";
+answ+=control(res.charAt(3) ,test.Q4[0],test.Q4[1],test.Q4[2],test.Q4[3])?"1":"0";
+answ+=control(res.charAt(4) ,test.Q5[0],test.Q5[1],test.Q5[2],test.Q5[3])?"1":"0";
+answ+=control(res.charAt(5) ,test.Q6[0],test.Q6[1],test.Q6[2],test.Q6[3])?"1":"0";
+
+showResult();
+    }
+}
+ <!--Результат-->
+
+function showResult()   {
+    var nok=0;
+    var i,s;
+ 
+for (i=0; i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+if(nok==6) s="ОТЛИЧНО";
+if(nok<6) s="ХОРОШО";
+if(nok<4.5) s="УДОВЛЕТВОРИТЕЛЬНО";
+if (nok<3) s="НЕУДОВЛЕТВОРИТЕЛЬНО";
+    document.test.s1.
+    value="Количество правильных ответов "+nok+". Ваша оценка "+s+". Посмотрите на окно рядом с номером вопроса. Если ответ правильный, там (+). Если ответ ошибочен, там (-).";
+ 
+with(document.test)
+    {
+    if (answ.charAt(0)=="1") {T1.value=" + "} else {T1.value=" - "};
+   if (answ.charAt(1)=="1") {T2.value=" + "} else {T2.value=" - "};
+   if (answ.charAt(2)=="1") {T3.value=" + "} else {T3.value=" - "};
+   if (answ.charAt(3)=="1") {T4.value=" + "} else {T4.value=" - "};
+   if (answ.charAt(4)=="1") {T5.value=" + "} else {T5.value=" - "};
+   if (answ.charAt(5)=="1") {T6.value=" + "} else {T6.value=" - "};
+     }
+}
+function showhide(obj){
+    if(obj == 'none') return 'inline';
+    else return 'none';
+}
+
+</script>
+<!--Заголовок-->
+
+<center><b>Топология сетей</b></center><br/><br/>
+<!--Вопросы-->
+<form name="test"><ol>
+<li><INPUT type="text" size="1" value="" name="T1"/><b> Что такое топология сетей?</b><br/>
+<input type="radio" value="0" name="Q1"/> Пропускная способность сети<br />
+<input type="radio" value="1" name="Q1"/> Способ соединения компьютеров в сети<br />
+<input type="radio" value="2" name="Q1"/> Длина сети<br />
+<input type="radio" value="3" name="Q1"/> Количество подключенных к сети компьютеров<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T2"/><b> Основные виды топологии сети?</b><br/>
+<input type="radio" value="0" name="Q2"/> Шина, кольцо, звезда<br />
+<input type="radio" value="1" name="Q2"/> Дерево, кольцо, звезда<br />
+<input type="radio" value="2" name="Q2"/> Шина, звезда, дерево<br />
+<input type="radio" value="3" name="Q2"/> Дерево, шина, кольцо<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T3"/><b> Топология, при которой компьютеры в сети подсоединяются к общему кабелю?</b><br/>
+<input type="radio" value="0" name="Q3"/> Кольцо<br />
+<input type="radio" value="1" name="Q3"/> Звезда<br />
+<input type="radio" value="2" name="Q3"/> Шина<br />
+<input type="radio" value="3" name="Q3"/> Линия<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T4"/><b> Что должно находиться на конце топологии шина?</b><br/>
+<input type="radio" value="0" name="Q4"/> Терминаторы<br />
+<input type="radio" value="1" name="Q4"/> Уничтожители<br />
+<input type="radio" value="2" name="Q4"/> Дезинтеграторы<br />
+<input type="radio" value="3" name="Q4"/> Разрушители<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T5"/><b> При выходе из строя одного компьютера в топологии \"кольцо\", нарушается?</b><br/>
+<input type="radio" value="0" name="Q5"/> Работа сети одного компьютера<br />
+<input type="radio" value="1" name="Q5"/> Работа сети всех последующих компьютеров<br />
+<input type="radio" value="2" name="Q5"/> Работа всей сети<br />
+<input type="radio" value="3" name="Q5"/> Работа сети всех предыдущих компьютеров<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T6"/><b> Топология, при которой все компьютеры подключаются к центральному узлу?</b><br/>
+<input type="radio" value="0" name="Q6"/> Шина<br />
+<input type="radio" value="1" name="Q6"/> Кольцо<br />
+<input type="radio" value="2" name="Q6"/> Звезда<br />
+<input type="radio" value="3" name="Q6"/> Двойное кольцо<br />
+<br/></li></ol>      
+<CENTER>
+<P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me()" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 
+</CENTER>        
+</form> 
+
+
+		
+		
+	
+
+</body>
+</html>
