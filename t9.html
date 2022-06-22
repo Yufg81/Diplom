@@ -1,0 +1,129 @@
+<!DOCTYPE html >
+
+<html>
+<head>
+<!--Кнопка назад-->
+
+
+<input type="button" onclick="history.back();" value="Назад"/>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<!--Заголовок-->
+<title>Электронное пособие</title>
+</head>
+<body>
+<!--Обозначение языка написания скрипта-->
+<script type="text/javascript" language="JavaScript">// <![CDATA[
+ var res="11321"; 
+ <!--Функция проверки наличия ответа-->
+
+
+function check_me()
+{
+    var count=0;
+    with(document.test) {
+if (!Q1[0].checked&&!Q1[1].checked&&!Q1[2].checked)  
+{count+=1};  
+if (!Q2[0].checked&&!Q2[1].checked&&!Q2[2].checked)  
+{count+=1};  
+if (!Q3[0].checked&&!Q3[1].checked&&!Q3[2].checked)  
+{count+=1};  
+if (!Q4[0].checked&&!Q4[1].checked&&!Q4[2].checked)  
+{count+=1};  
+if (!Q5[0].checked&&!Q5[1].checked&&!Q5[2].checked)  
+{count+=1};  
+if (count>0) alert("Вы выполнили не все задания. Проверьте себя!")    
+        else answer();
+    }
+} 
+ <!--проверка соответствия-->
+function control(k, f1,f2,f3,f4,f5) {
+if (k==1&&f1.checked) return true;
+if (k==2&&f2.checked) return true;
+if (k==3&&f3.checked) return true;
+if (k==4&&f4.checked) return true;
+if (k==5&&f5.checked) return true;
+return false;
+}
+<!--анализ результатов-->
+function answer() {
+answ="";
+     with(document)    {
+    answ+=control(res.charAt(0) ,test.Q1[0],test.Q1[1],test.Q1[2])?"1":"0";
+answ+=control(res.charAt(1) ,test.Q2[0],test.Q2[1],test.Q2[2])?"1":"0";
+answ+=control(res.charAt(2) ,test.Q3[0],test.Q3[1],test.Q3[2])?"1":"0";
+answ+=control(res.charAt(3) ,test.Q4[0],test.Q4[1],test.Q4[2])?"1":"0";
+answ+=control(res.charAt(4) ,test.Q5[0],test.Q5[1],test.Q5[2])?"1":"0";
+
+showResult();
+    }
+}
+ <!--Результат-->
+function showResult()   {
+    var nok=0;
+    var i,s;
+ 
+for (i=0; i<answ.length;i++) {nok+=answ.charAt(i)=="1"?1:0;}
+if(nok==5) s="ОТЛИЧНО";
+if(nok<5) s="ХОРОШО";
+if(nok<3.75) s="УДОВЛЕТВОРИТЕЛЬНО";
+if (nok<2.5) s="НЕУДОВЛЕТВОРИТЕЛЬНО";
+    document.test.s1.
+    value="Количество правильных ответов "+nok+". Ваша оценка "+s+". Посмотрите на окно рядом с номером вопроса. Если ответ правильный, там (+). Если ответ ошибочен, там (-).";
+ 
+with(document.test)
+    {
+    if (answ.charAt(0)=="1") {T1.value=" + "} else {T1.value=" - "};
+   if (answ.charAt(1)=="1") {T2.value=" + "} else {T2.value=" - "};
+   if (answ.charAt(2)=="1") {T3.value=" + "} else {T3.value=" - "};
+   if (answ.charAt(3)=="1") {T4.value=" + "} else {T4.value=" - "};
+   if (answ.charAt(4)=="1") {T5.value=" + "} else {T5.value=" - "};
+     }
+}
+function showhide(obj){
+    if(obj == 'none') return 'inline';
+    else return 'none';
+}
+
+</script>
+<!--Заголовок-->
+
+<center><b>Сетевые операционные системы</b></center><br/><br/>
+<!--Вопросы-->
+<form name="test"><ol>
+<li><INPUT type="text" size="1" value="" name="T1"/><b> Что такое сетевая операционная система?</b><br/>
+<input type="radio" value="0" name="Q1"/> ПО, предназначенное для управления взаимодействием аппаратных средств сети<br />
+<input type="radio" value="1" name="Q1"/> По, предназначенное для диалога компьютера с пользователем<br />
+<input type="radio" value="2" name="Q1"/> Специальная система для обеспечения работы сети<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T2"/><b> Какие типы учетных записей используют для обеспечения безопасности сети?</b><br/>
+<input type="radio" value="0" name="Q2"/> Записи пользователей, группы пользователей, группы компьютеров<br />
+<input type="radio" value="1" name="Q2"/> Пользователь, администратор<br />
+<input type="radio" value="2" name="Q2"/> Ученик, студент, учитель<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T3"/><b> Назовите семейство сетевых операционных систем?</b><br/>
+<input type="radio" value="0" name="Q3"/> Linux, IOS<br />
+<input type="radio" value="1" name="Q3"/> IOS, android<br />
+<input type="radio" value="2" name="Q3"/> Windows, Unix<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T4"/><b> На чем основана безопасность на уровне пользователя?</b><br/>
+<input type="radio" value="0" name="Q4"/> На сложных связях между администратором и пользователем<br />
+<input type="radio" value="1" name="Q4"/> На создание отдельных учетных записей для всех пользователей<br />
+<input type="radio" value="2" name="Q4"/> На получении доступа только по ссылке<br />
+<br/></li><li><INPUT type="text" size="1" value="" name="T5"/><b> Какой разделяемый ресурс представляет собой документ</b><br/>
+<input type="radio" value="0" name="Q5"/> Разделяемые файлы и каталоги<br />
+<input type="radio" value="1" name="Q5"/> Разделяемые приложения<br />
+<input type="radio" value="2" name="Q5"/> Разделяемые подключения<br />
+<br/></li></ol>      
+<CENTER>
+<P><TEXTAREA name="s1" rows="4" cols="70" readonly> </TEXTAREA> </P>
+<INPUT onclick="check_me()" type="button" value="Показать результат"/>&nbsp;&nbsp;&nbsp;&nbsp; 
+<INPUT type="reset" value="Сбросить ответы"/> 
+</CENTER>        
+</form> 
+
+
+
+
+		
+		
+	
+
+</body>
+</html>
